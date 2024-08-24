@@ -1,0 +1,58 @@
+CREATE TABLE famous(
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    name TEXT,
+    type TEXT);
+    
+CREATE TABLE movies(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_famous INTEGER,
+    name_movie TEXT,
+    marry TEXT);
+
+CREATE TABLE singers(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_famous INTEGER,
+    name_song TEXT,
+    country TEXT);
+CREATE TABLE authors(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_famous INTEGER,
+    name_book TEXT);
+    
+-- Inserting Famous People
+INSERT INTO famous (name, type) VALUES ('Brad Pitt', 'Movie Star');
+INSERT INTO famous (name, type) VALUES ('Angelina Jolie', 'Movie Star');
+INSERT INTO famous (name, type) VALUES ('Beyoncé', 'Singer');
+INSERT INTO famous (name, type) VALUES ('J.K. Rowling', 'Author');
+
+-- Inserting Movies
+INSERT INTO movies (id_famous, name_movie, marry) VALUES (1, 'Fight Club', 'No');
+INSERT INTO movies (id_famous, name_movie, marry) VALUES (2, 'Maleficent', 'Yes');
+
+-- Inserting Songs
+INSERT INTO singers (id_famous, name_song, country) VALUES (3, 'Halo', 'USA');
+
+-- Inserting Books
+INSERT INTO authors (id_famous, name_book) VALUES (4, 'Harry Potter and the Sorcerer''s Stone');
+
+    
+SELECT famous.id, famous.name, famous.type,
+movies.marry, movies.name_movie
+FROM famous
+JOIN movies
+ON famous.id = movies.id_famous
+ORDER BY name_movie;
+
+SELECT famous.id, famous.name, famous.type,
+singers.name_song, singers.country
+FROM famous
+JOIN singers
+ON famous.id = singers.id_famous;
+
+SELECT famous.id, famous.name, famous.type,
+authors.name_book
+FROM famous
+JOIN authors
+GROUP BY type
+ORDER BY name;
+

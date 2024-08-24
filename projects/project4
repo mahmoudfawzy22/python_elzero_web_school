@@ -1,0 +1,33 @@
+
+SELECT * FROM user;
+
+INSERT INTO chats(id_users, massage) VALUES(1, "Today we will learn sql too");
+INSERT INTO chats(id_users, massage) VALUES(1, "don't use chat gpt");
+INSERT INTO chats(id_users, massage) VALUES(1, "show me the code of the project");
+INSERT INTO chats(id_users, massage) VALUES(2,
+"Let's learn english");
+INSERT INTO chats(id_users, massage) VALUES(2,
+"are you busy");
+INSERT INTO chats(id_users, massage) VALUES(3,
+"What i will do today?");
+INSERT INTO chats(id_users, massage) VALUES(3,
+"let's go gym");
+
+SELECT * FROM chats;
+
+UPDATE chats SET massage = "we will change the plan" WHERE id_users = 1 AND
+id = 2;
+
+SELECT * FROM chats;
+
+DELETE FROM chats WHERE id = 4 AND id_users = 2;
+
+SELECT * FROM chats;
+
+SELECT 
+    chats.id, user.name, user.member_since,
+    chats.massage
+FROM chats
+JOIN user
+ON chats.id_users = user.id;
+
